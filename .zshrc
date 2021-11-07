@@ -32,6 +32,9 @@ export LANG=en_US.UTF-8
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
+export EDITOR='vim'
+export VISUAL='vim'
+
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
