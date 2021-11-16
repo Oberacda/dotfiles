@@ -1,13 +1,13 @@
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/oberacda/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/oberacda/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/oberacda/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/oberacda/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/oberacda/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/oberacda/opt/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/oberacda/miniconda3/bin:$PATH"
+        export PATH="/Users/oberacda/opt/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -15,9 +15,17 @@ unset __conda_setup
 
 
 # User configuration
-export PATH="/home/oberacda/.cargo/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 15.0.1)
+
+export DYLD_LIBRARY_PATH="/usr/local/opt/icu4c/lib:$DYLD_LIBRARY_PATH"
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Load Antigen
