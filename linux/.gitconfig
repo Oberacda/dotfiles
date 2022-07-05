@@ -5,7 +5,7 @@
 [commit]
 	gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /usr/bin/gpg
 [alias]
 	logs = log --show-signature
 [core]

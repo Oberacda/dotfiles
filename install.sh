@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # Install rustup and subsequently rust.
 # This is required for some of tools.
@@ -35,6 +36,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     	sudo apt install zsh
 	cp linux/.zshrc $HOME/.zshrc
 	cp linux/.antigenrc $HOME/.antigenrc
+	mkdir -p $HOME/.config/i3
+	cp linux/.i3-config $HOME/.config/i3/config
+	mkdir -p $HOME/.config/i3status-rust/
+	cp linux/.i3status-rust.toml $HOME/.config/i3status-rust/config.toml
+
 fi
 
 

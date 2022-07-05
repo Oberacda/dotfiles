@@ -22,8 +22,8 @@ antigen bundle gpg-agent
 antigen bundle ssh-agent
 antigen bundle keychain
 # Rust
-antigen bundle rust
-antigen bundle rustup
+#antigen bundle rust
+#antigen bundle rustup
 # Virtualenv
 antigen bundle virtualenv
 
