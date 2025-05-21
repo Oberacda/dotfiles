@@ -34,6 +34,14 @@ else
   echo "✅ lsd already installed"
 fi
 
+# 4) Install zoxide if needed
+if ! command -v zoxide &>/dev/null; then
+  echo "🚀 Installing zoxide..."
+  cargo install zoxide
+else
+  echo "✅ zoxide already installed"
+fi
+
 # 4) Install antigen if needed
 ANTIGEN_ZSH="$HOME/.config/antigen/antigen.zsh"
 if [ ! -f "$ANTIGEN_ZSH" ]; then
