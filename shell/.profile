@@ -27,12 +27,14 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export VISUAL='nvim'
 export MANPAGER='nvim +Man!'
+export TERM=xterm-256color
+
 export GOPATH="$HOME/.go"
 
 # Compilation flags
-export CC=clang-20
-export CXX=clang++-20
-export LLVM_CONFIG="/usr/bin/llvm-config-20"
+export CC=clang
+export CXX=clang++
+export LLVM_CONFIG="/usr/bin/llvm-config"
 
 # Default ROS2 DDS Settings
 export ROS_DOMAIN_ID=66
