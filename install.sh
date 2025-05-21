@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
+${PWD}/install-deps.sh
+
 rm -rf $HOME/.zshrc $HOME/.bashrc $HOME/.profile
 
 mkdir -p $HOME/.config
