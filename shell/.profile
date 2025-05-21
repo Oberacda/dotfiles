@@ -40,5 +40,6 @@ export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
 export RCUTILS_CONSOLE_OUTPUT_FORMAT=${RCUTILS_CONSOLE_OUTPUT_FORMAT:='[{severity}] {message}  ({name} {function_name}:{line_number})'}
 export RCUTILS_COLORIZED_OUTPUT=1 # force log colors
+export ROB_FOLDERS_DISABLE_PROMPT_MODIFICATION=1
 
 export PROFILE_IS_SOURCED=1
