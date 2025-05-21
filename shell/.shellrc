@@ -24,14 +24,20 @@ mcd() {
 # /_/   \_\_____|___/_/   \_\____/|_____|____/
 
 alias v='nvim'
-alias z='zathura'
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 alias pzf="fzf --height 100% --preview 'bat --color=always --style=full --line-range=:500 {}'"
 alias ip='ip -c'
 alias weather='curl wttr.in/karlsruhe'
-alias clip='xclip -sel clip'
 alias tl='tree -L 1'
+
+alias cd='z'
+alias ls='lsd -A'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+alias rms='safe-rm'
+
 
 if [ "$(hostname)" = "KekPad" ] && [ ! -f "/.dockerenv" ]; then
   alias rm="$HOME/.local/bin/safe-rm"
@@ -64,18 +70,3 @@ if [ -f ~/.local_shellrc ]; then
   source ~/.local_shellrc
 fi
 
-# SSH Agent
-if [ "$(hostname)" = "KekPad" ] && [ ! -f "/.dockerenv" ]; then
-  if [ -z "$SSH_AUTH_SOCK" ]; then
-    # Check for a currently running instance of the agent
-    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
-    if [ "$RUNNING_AGENT" = "0" ]; then
-      # Launch a new instance of the agent
-      ssh-agent -a /tmp/ssh-agent -s &> $HOME/.ssh/ssh-agent
-      # add all ssh keys
-      eval `cat $HOME/.ssh/ssh-agent` > /dev/null
-      find ~/.ssh -type f -name '*_id_*' ! -name "*.pub" | xargs ssh-add > /dev/null
-    fi
-    eval `cat $HOME/.ssh/ssh-agent` > /dev/null
-  fi
-fi

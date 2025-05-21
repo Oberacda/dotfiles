@@ -21,8 +21,24 @@ if [ -d "$HOME/.cargo" ]; then
   . "$HOME/.cargo/env"
 fi
 
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
 export EDITOR="nvim"
+export VISUAL='nvim'
 export MANPAGER='nvim +Man!'
 export GOPATH="$HOME/.go"
+
+# Compilation flags
+export CC=clang-20
+export CXX=clang++-20
+export LLVM_CONFIG="/usr/bin/llvm-config-20"
+
+# Default ROS2 DDS Settings
+export ROS_DOMAIN_ID=66
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+
+export RCUTILS_CONSOLE_OUTPUT_FORMAT=${RCUTILS_CONSOLE_OUTPUT_FORMAT:='[{severity}] {message}  ({name} {function_name}:{line_number})'}
+export RCUTILS_COLORIZED_OUTPUT=1 # force log colors
 
 export PROFILE_IS_SOURCED=1
