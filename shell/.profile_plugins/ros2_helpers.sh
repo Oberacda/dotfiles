@@ -1,10 +1,26 @@
 if [ ! -d "/opt/ros/humble" ] &&
   [ ! -d "/opt/ros/iron" ] &&
-  [ ! -d "/opt/ros/foxy" ] &&
+  [ ! -d "/opt/ros/jazzy" ] &&
   [ ! -d "/opt/ros/rolling" ] \
   ; then
   return 0
 fi
+
+# for lazy loading fzirob
+source_robot_folders() {
+  unalias fzirob
+  unalias ce
+  if [ -f ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh ]; then
+    source ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh
+  elif [ -f /source-robot-folders ]; then
+    source /source-robot-folders
+  fi
+  $@
+}
+
+alias fzirob="source_robot_folders fzirob"
+alias ce="source_robot_folders fzirob change_environment"
+alias catmux="tmux -L catmux"
 
 if [ -f /usr/share/colcon_cd/function/colcon_cd.sh ]; then
   source /usr/share/colcon_cd/function/colcon_cd.sh

@@ -46,7 +46,7 @@ antigen bundle 'svenXY/timewarrior'
 antigen bundle unixorn/fzf-zsh-plugin@main
 antigen bundle joshskidmore/zsh-fzf-history-search
 
-antigen theme Oberacda/doberacker-bira
+antigen theme Oberacda/doberacker-bira@main doberacker-bira
 
 # Select theme
 #antigen theme doberacker-bira
