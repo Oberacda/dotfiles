@@ -1,46 +1,26 @@
 #!/usr/bin/env bash
-set -e
+set -ex
 
-# Install rustup and subsequently rust.
-# This is required for some of tools.
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rm -rf $HOME/.zshrc $HOME/.bashrc $HOME/.profile
 
-# Install rust based tools.
-cargo install git-delta
-cargo install lsd
+mkdir -p $HOME/.config
 
-# Install git config
-cp .gitconfig $HOME/.gitconfig
+ln -sf ${PWD}/zsh/.zshrc ${HOME}
 
-# Install vim config
-mkdir -p $HOME/.vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ln -sf ${PWD}/nvim ${HOME}/.config
 
-if [ "$(uname)" == "Darwin" ]; then
-	brew install vim
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    	sudo apt install vim
-fi
-cp .vimrc $HOME/.vimrc
-vim +PluginInstall -c ":q" -c " :q"
+ln -sf ${PWD}/git ${HOME}/.config
 
-# Install zsh config
-mkdir -p $HOME/.config/antigen
-curl -L git.io/antigen > $HOME/.config/antigen/antigen.zsh
+ln -sf ${PWD}/tmux/.tmux.conf ${HOME}
 
-if [ "$(uname)" == "Darwin" ]; then
-	brew install zsh
-    	cp macos/.zshrc $HOME/.zshrc
-	cp macos/.antigenrc $HOME/.antigenrc
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    	sudo apt install zsh
-	cp linux/.zshrc $HOME/.zshrc
-	cp linux/.antigenrc $HOME/.antigenrc
-	mkdir -p $HOME/.config/i3
-	cp linux/.i3-config $HOME/.config/i3/config
-	mkdir -p $HOME/.config/i3status-rust/
-	cp linux/.i3status-rust.toml $HOME/.config/i3status-rust/config.toml
+ln -sf ${PWD}/shell/.bashrc ${HOME}
+ln -sf ${PWD}/shell/.bash_profile ${HOME}
+ln -sf ${PWD}/shell/.profile ${HOME}
+ln -sf ${PWD}/shell/.profile_plugins ${HOME}
+ln -sf ${PWD}/shell/.shellrc ${HOME}
+ln -sf ${PWD}/shell/.zprofile ${HOME}
 
-fi
+ln -sf ${PWD}/robot_folders/robot_folders.yaml ${HOME}/.config
 
-
+mkdir -p $HOME/.local/bin
+ln -sf ${PWD}/scripts/* ${HOME}/.local/bin
