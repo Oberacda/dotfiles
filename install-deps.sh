@@ -42,6 +42,27 @@ else
   echo "✅ zoxide already installed"
 fi
 
+if ! command -v rg &>/dev/null; then
+  echo "🚀 Installing ripgrep..."
+  cargo install ripgrep
+else
+  echo "✅ ripgrep already installed"
+fi
+
+if ! command -v fd &>/dev/null; then
+  echo "🚀 Installing fd-find..."
+  cargo install fd-find
+else
+  echo "✅ fd-find already installed"
+fi
+
+if ! command -v git-cliff &>/dev/null; then
+  echo "🚀 Installing git-cliff..."
+  cargo install git-cliff
+else
+  echo "✅ git-cliff already installed"
+fi
+
 # 4) Install antigen if needed
 ANTIGEN_ZSH="$HOME/.config/antigen/antigen.zsh"
 if [ ! -f "$ANTIGEN_ZSH" ]; then
