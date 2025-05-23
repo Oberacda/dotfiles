@@ -9,11 +9,21 @@ fi
 if [ -f ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh ]; then
   source ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh
 fi
+if [ -f /usr/local/bin/rob_folders_source.sh ]; then
+  source /usr/local/bin/rob_folders_source.sh
+fi
 
 alias catmux="tmux -L catmux"
 
-eval "$(register-python-argcomplete3 ros2)"
-eval "$(register-python-argcomplete3 colcon)"
+if command -v register-python-argcomplete &>/dev/null; then
+  eval "$(register-python-argcomplete ros2)"
+  eval "$(register-python-argcomplete colcon)"
+fi
+
+if command -v register-python-argcomplete3 &>/dev/null; then
+  eval "$(register-python-argcomplete3 ros2)"
+  eval "$(register-python-argcomplete3 colcon)"
+fi
 
 _check_colcon_prefix_path() {
   if [ -z "$COLCON_PREFIX_PATH" ]; then
