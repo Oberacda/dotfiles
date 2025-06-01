@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-./install-deps.sh
+${PWD}/install-deps.sh
 
 rm -rf $HOME/.zshrc $HOME/.bashrc $HOME/.profile
 
