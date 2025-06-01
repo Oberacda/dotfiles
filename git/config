@@ -1,6 +1,7 @@
 
 [user]
 	name = David Oberacker
+	email = developer@oberacker.me
 [commit]
 	gpgsign = true
 [gpg]

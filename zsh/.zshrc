@@ -33,7 +33,7 @@ antigen bundle keychain
 #antigen bundle rustup
 # Virtualenv
 antigen bundle virtualenv
-
+antigen bundle docker
 
 antigen bundle ssh-agent
 
