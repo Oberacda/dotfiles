@@ -5,6 +5,9 @@ export PATH=$HOME/.cabal/bin:$PATH
 export PATH="${PATH}:$(go env GOPATH)/bin"
 export BUNDLE_PATH=~/.gems
 
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+[[ -d $ZSH_CACHE_DIR/completions ]] || mkdir -p $ZSH_CACHE_DIR/completions  # For kubectl completions
+
 # Load Antigen
 source "$HOME/.config/antigen/antigen.zsh"
 
@@ -19,21 +22,18 @@ antigen bundle bazel
 antigen bundle cabal
 # Cargo build system
 antigen bundle cargo
-# Conda
-antigen bundle esc/conda-zsh-completion
-# Git-auto-fetch
-antigen bundle git-auto-fetch
 # Gitignore templates
 antigen bundle gitignore
 # Keychain
 antigen bundle gpg-agent
 antigen bundle keychain
 # Rust
-#antigen bundle rust
-#antigen bundle rustup
+antigen bundle rust
+antigen bundle rustup
 # Virtualenv
 antigen bundle virtualenv
 antigen bundle docker
+antigen bundle spotify
 
 antigen bundle ssh-agent
 
@@ -53,7 +53,9 @@ antigen theme Oberacda/doberacker-bira@main doberacker-bira
 
 # Tell Antigen that you're done
 antigen apply
-fpath+=~/.zfunc
+
+fpath=($ZSH_CACHE_DIR/completions $fpath)
+fpath=($HOME/.zfunc $fpath)
 
 eval "$(zoxide init zsh)"
 

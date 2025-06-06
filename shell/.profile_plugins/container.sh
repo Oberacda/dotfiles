@@ -9,6 +9,6 @@ function fzirobdev() {
 
 alias devup='devcontainer up --workspace-folder . --dotfiles-repository=https://github.com/Oberacda/dotfiles.git --dotfiles-install-command=install.sh'
 alias devupnodot='devcontainer up --workspace-folder .'
-alias devnew='devcontainer up --workspace-folder . --dotfiles-repository=https://github.com/Oberacda/dotfiles.git --dotfiles-install-command=install.bash --remove-existing-container'
+alias devnew='devcontainer up --workspace-folder . --dotfiles-repository=https://github.com/Oberacda/dotfiles.git --dotfiles-install-command=install.sh --remove-existing-container'
 alias devrun='devcontainer exec --workspace-folder .'
 alias devsh='devcontainer exec --workspace-folder . zsh'
