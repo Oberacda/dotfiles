@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-notify",
+  event = "VeryLazy",
   keys = {
     {
       "<leader>un",
@@ -22,12 +23,4 @@ return {
       vim.api.nvim_win_set_config(win, { zindex = 100 })
     end,
   },
-  init = function()
-    -- when noice is not enabled, install notify on VeryLazy
-    if not LazyVim.has("noice.nvim") then
-      LazyVim.on_very_lazy(function()
-        vim.notify = require("notify")
-      end)
-    end
-  end,
 }
