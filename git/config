@@ -1,7 +1,8 @@
 
 [user]
 	name = David Oberacker
-	email = developer@oberacker.me
+	email = oberacker@fzi.de
+	signingkey = BE3118D8C611A3772A125CE49C6194F537AD0EBD
 [commit]
 	gpgsign = true
 [gpg]
@@ -10,7 +11,7 @@
 	logs = log --show-signature
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 [alias]
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [pager]
