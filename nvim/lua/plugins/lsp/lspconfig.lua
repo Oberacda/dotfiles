@@ -2,19 +2,12 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    'saghen/blink.cmp',
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/lazydev.nvim",                  opts = {} },
     { "ray-x/lsp_signature.nvim" },
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
     local cfg = {
       always_trigger = true,
     }
@@ -76,7 +69,7 @@ return {
     })
     vim.lsp.inlay_hint.enable(true)
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -85,6 +78,5 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
-
   end,
 }
