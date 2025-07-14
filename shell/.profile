@@ -32,9 +32,9 @@ export TERM=xterm-256color
 export GOPATH="$HOME/.go"
 
 # Compilation flags
-export CC=clang
-export CXX=clang++
-export LLVM_CONFIG="/usr/bin/llvm-config"
+export CC=clang-19
+export CXX=clang++-19
+export LLVM_CONFIG="/usr/bin/llvm-config-19"
 
 # Default ROS2 DDS Settings
 export ROS_DOMAIN_ID=66
