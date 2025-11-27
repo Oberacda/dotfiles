@@ -1,24 +1,24 @@
 #!/bin/bash
 
 if [ -d "/usr/games" ]; then
-  PATH="/usr/games:$PATH"
+	PATH="/usr/games:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
-  PATH="$HOME/.local/bin:$PATH"
+	PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d "$HOME/.scripts" ]; then
-  PATH="$HOME/.scripts:$PATH"
+	PATH="$HOME/.scripts:$PATH"
 fi
 
 if [ -d "$HOME/.cargo/bin" ]; then
-  PATH="$HOME/.cargo/bin:$PATH"
+	PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 if [ -d "$HOME/.cargo" ]; then
-  . "$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 # You may need to manually set your language environment
@@ -30,6 +30,7 @@ export MANPAGER='nvim +Man!'
 export TERM=xterm-256color
 
 export GOPATH="$HOME/.go"
+export CARGO_HOME="$HOME/.cargo"
 
 # Compilation flags
 export CC=clang-19
