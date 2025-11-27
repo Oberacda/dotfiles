@@ -1,13 +1,14 @@
 if [ ! -d "/opt/ros/humble" ] &&
   [ ! -d "/opt/ros/iron" ] &&
   [ ! -d "/opt/ros/jazzy" ] &&
+  [ ! -d "/opt/ros/kilted" ] &&
   [ ! -d "/opt/ros/rolling" ] \
   ; then
   return 0
 fi
 
-if [ -f ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh ]; then
-  source ${HOME}/.local/pipx/venvs/robot-folders/bin/rob_folders_source.sh
+if [ -f /usr/local/py-utils/venvs/robot-folders/bin/rob_folders_source.sh ]; then
+  source /usr/local/py-utils/venvs/robot-folders/bin/rob_folders_source.sh
 fi
 if [ -f /usr/local/bin/rob_folders_source.sh ]; then
   source /usr/local/bin/rob_folders_source.sh
