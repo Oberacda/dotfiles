@@ -1,76 +1,80 @@
 return {
-  -- Highlight, edit, and navigate code
-  'nvim-treesitter/nvim-treesitter',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  },
-  build = ':TSUpdate',
-  config = function()
-    require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { "c", "cpp", "python", "rust", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
-      ignore_install = {},
-      modules = {},
-
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-      auto_install = true,
-      sync_install = true,
-
-      highlight = { enable = true },
-      indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
-        },
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            [']m'] = '@function.outer',
-            [']]'] = '@class.outer',
-          },
-          goto_next_end = {
-            [']M'] = '@function.outer',
-            [']['] = '@class.outer',
-          },
-          goto_previous_start = {
-            ['[m'] = '@function.outer',
-            ['[['] = '@class.outer',
-          },
-          goto_previous_end = {
-            ['[M'] = '@function.outer',
-            ['[]'] = '@class.outer',
-          },
-        },
-        --swap = {
-        --enable = true,
-        --swap_next = {
-        --['<leader>a'] = '@parameter.inner',
-        --},
-        --swap_previous = {
-        --['<leader>A'] = '@parameter.inner',
-        --},
-        --},
-      },
-    }
-  end
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	event = { "LazyFile", "VeryLazy" },
+	lazy = false, -- load treesitter early when opening a file from the cmdline
+	init = function(plugin)
+		-- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+		-- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
+		-- no longer trigger the **nvim-treesitter** module to be loaded in time.
+		-- Luckily, the only things that those plugins need are the custom queries, which we make available
+		-- during startup.
+		require("lazy.core.loader").add_to_rtp(plugin)
+	end,
+	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+	keys = {
+		{ "<c-space>", desc = "Increment Selection" },
+		{ "<bs>", desc = "Decrement Selection", mode = "x" },
+	},
+	opts_extend = { "ensure_installed" },
+	---@type TSConfig
+	---@diagnostic disable-next-line: missing-fields
+	opts = {
+		highlight = { enable = true },
+		indent = { enable = true },
+		ensure_installed = {
+			"bash",
+			"c",
+			"diff",
+			"html",
+			"javascript",
+			"jsdoc",
+			"json",
+			"jsonc",
+			"lua",
+			"luadoc",
+			"luap",
+			"markdown",
+			"markdown_inline",
+			"printf",
+			"python",
+			"query",
+			"regex",
+			"toml",
+			"tsx",
+			"typescript",
+			"vim",
+			"vimdoc",
+			"xml",
+			"yaml",
+		},
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection = "<C-space>",
+				node_incremental = "<C-space>",
+				scope_incremental = false,
+				node_decremental = "<bs>",
+			},
+		},
+		textobjects = {
+			move = {
+				enable = true,
+				goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+				goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+				goto_previous_start = {
+					["[f"] = "@function.outer",
+					["[c"] = "@class.outer",
+					["[a"] = "@parameter.inner",
+				},
+				goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+			},
+		},
+	},
+	---@param opts TSConfig
+	config = function(_, opts)
+		if type(opts.ensure_installed) == "table" then
+			opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
+		end
+	end,
 }
