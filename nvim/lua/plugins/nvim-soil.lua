@@ -8,10 +8,17 @@ return {
   ft = "plantuml",
   opts = {
     -- If you want to change default configurations
+    actions = {
+      redraw = true,
+    },
+
 
     image = {
-      darkmode = false,       -- Enable or disable darkmode
-      format = "svg",         -- Choose between png or svg
+      darkmode = true, -- Enable or disable darkmode
+      format = "pdf",  -- Choose between png or svg
+      execute_to_open = function(img)
+        return "zathura " .. img
+      end
     }
   }
 }
