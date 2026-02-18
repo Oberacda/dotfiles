@@ -57,7 +57,7 @@ return {
     --
     -- See the fuzzy documentation for more information
     fuzzy = {
-      implementation = "rust",
+      implementation = "prefer_rust",
     }
   },
   opts_extend = { "sources.default" }

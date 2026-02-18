@@ -7,6 +7,8 @@ return {
   },
   config = function()
     require("nvim-tree").setup {
+      hijack_netrw = true,
+      hijack_cursor = true,
       update_focused_file = {
         enable      = true,
         update_root = {
@@ -14,9 +16,18 @@ return {
           ignore_list = {}
         },
       },
-      sync_root_with_cwd = false,
+      sync_root_with_cwd = true,
+      view = {
+        width = 30,
+        side = "left",
+      },
+      filters = {
+        dotfiles = false,
+      },
     }
+    
+    -- Keymaps
+    vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<cr>', { desc = "Toggle NvimTree" })
+    vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFocus<cr>', { desc = "Focus NvimTree" })
   end,
-
-  vim.keymap.set({ 'n' }, '<leader>t', ':NvimTreeFindFileToggle<cr>', { silent = true })
 }

@@ -1,3 +1,0 @@
-return {
-'bling/vim-airline'
-}

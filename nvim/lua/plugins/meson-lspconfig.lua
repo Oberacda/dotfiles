@@ -1,1 +1,0 @@
-return { "mason-org/mason-lspconfig.nvim", config = function() end }

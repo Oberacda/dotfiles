@@ -17,7 +17,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
 	PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if [ -d "$HOME/.cargo" ]; then
+if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
@@ -33,9 +33,9 @@ export GOPATH="$HOME/.go"
 export CARGO_HOME="$HOME/.cargo"
 
 # Compilation flags
-export CC=clang-19
-export CXX=clang++-19
-export LLVM_CONFIG="/usr/bin/llvm-config-19"
+export CC=clang
+export CXX=clang++
+export LLVM_CONFIG="/usr/bin/llvm-config"
 
 # Default ROS2 DDS Settings
 export ROS_DOMAIN_ID=66
@@ -44,6 +44,7 @@ export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 export RCUTILS_CONSOLE_OUTPUT_FORMAT=${RCUTILS_CONSOLE_OUTPUT_FORMAT:='[{severity}] {message}  ({name} {function_name}:{line_number})'}
 export RCUTILS_COLORIZED_OUTPUT=1 # force log colors
 export ROB_FOLDERS_DISABLE_PROMPT_MODIFICATION=1
+export COLCON_DEFAULT_OUTPUT_STYLE=catkin_tools
 
 export PROFILE_IS_SOURCED=1
 export GTK_USE_PORTAL=1
