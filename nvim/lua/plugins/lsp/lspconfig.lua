@@ -8,12 +8,6 @@ return {
     { "ray-x/lsp_signature.nvim" },
   },
   config = function()
-    local cfg = {
-      always_trigger = true,
-    }
-    local sig = require 'lsp_signature'.setup(cfg)
-
-
     local keymap = vim.keymap -- for conciseness
 
     vim.api.nvim_create_autocmd("LspAttach", {
