@@ -2,7 +2,7 @@
 [user]
 	name = David Oberacker
 	email = oberacker@fzi.de
-	signingkey = BE3118D8C611A3772A125CE49C6194F537AD0EBD
+	signingkey = C8E1596AFC2E8858D70BA935504E9F7EB5D79709
 [commit]
 	gpgsign = true
 [gpg]

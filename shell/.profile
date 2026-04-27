@@ -21,8 +21,9 @@ if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
+if [ -d "$HOME/.pixi/bin" ]; then
+    PATH="$HOME/.pixi/bin:$PATH"
+fi
 
 export EDITOR="nvim"
 export VISUAL='nvim'
@@ -39,7 +40,8 @@ export LLVM_CONFIG="/usr/bin/llvm-config"
 
 # Default ROS2 DDS Settings
 export ROS_DOMAIN_ID=66
-export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+export ZENOH_ROUTER_CHECK_ATTEMPTS=0
 
 export RCUTILS_CONSOLE_OUTPUT_FORMAT='[{time}] [{severity}] {message}  ({name} {function_name}:{line_number})'
 export RCUTILS_COLORIZED_OUTPUT=1 # force log colors

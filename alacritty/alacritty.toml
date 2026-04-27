@@ -1,0 +1,11 @@
+general.import = ["~/.config/alacritty/cyberdream.toml"]
+
+[font]
+normal = { family="IosevkaTerm Nerd Font Mono", style="Regular"}
+size = 12
+
+[keyboard]
+bindings = [
+  { key="n",  mods="Control", action="CreateNewWindow" }
+]
+

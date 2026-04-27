@@ -70,4 +70,3 @@ source $HOME/.shellrc
 
 [ -z $PROFILE_IS_SOURCED ] && source $HOME/.profile
 
-

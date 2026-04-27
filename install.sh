@@ -22,6 +22,9 @@ ln -sf ${PWD}/shell/.profile_plugins ${HOME}
 ln -sf ${PWD}/shell/.shellrc ${HOME}
 ln -sf ${PWD}/shell/.zprofile ${HOME}
 
+ln -sf ${PWD}/alacritty ${HOME}/.config
+ln -sf ${PWD}/kitty ${HOME}/.config
+
 ln -sf ${PWD}/robot_folders/robot_folders.yaml ${HOME}/.config
 
 mkdir -p $HOME/.local/bin
